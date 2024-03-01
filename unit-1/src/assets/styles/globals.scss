@@ -14,13 +14,6 @@ body {
     padding: 0;
 }
 
-a {
-    color: var(--primary-inactive);
-    text-decoration: none;
-    transition: var(--transition);
-
-    &:hover {
-        color: var(--primary-hover);
-        text-decoration: underline;
-    }
+img {
+    max-width: 100%;
 }

@@ -1,0 +1,53 @@
+@import "./assets/styles/globals.scss";
+
+.bg-component {
+    background-color: var(--high-contrast);
+    border-radius: 8px;
+}
+
+.title {
+    font-family: "rubik";
+    font-size: 1.25rem;
+    font-weight: bold;
+    color: white;
+}
+
+.flex {
+    display: flex;
+
+    .aic {
+        align-items: center;
+    }
+
+    .jc {
+        justify-content: center;
+    }
+}
+
+.App {
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    background-color: var(--background);
+    padding: 2rem;
+
+    .container {
+        display: flex;
+        height: 100%;
+        gap: 1rem;
+
+       
+        main.main {
+            flex: 1;
+        }
+
+        .left {
+            padding: 1rem;
+        }
+    }
+
+    .leagues {
+        margin-top: 1rem;
+       
+    }
+}
