@@ -1,0 +1,26 @@
+@import "typography";
+@import "layout";
+@import "colors";
+@import "shadows";
+@import "transitions";
+
+
+*, *::after, *::before {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    color: var(--primary-inactive);
+    text-decoration: none;
+    transition: var(--transition);
+
+    &:hover {
+        color: var(--primary-hover);
+        text-decoration: underline;
+    }
+}
