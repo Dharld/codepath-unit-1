@@ -55,11 +55,12 @@ function App() {
     const getStanding = async (leagueId) => {
       try {
         const url = `https://apiv3.apifootball.com/?action=get_standings&league_id=${leagueId}&APIkey=${apiKey}`;
-        const { data } = await axios.get(url);
+        const url2 = `https://apiv3.apifootball.com/?action=get_topscorers&league_id=${leagueId}&APIkey=${apiKey}`;
 
-        console.log(data);
+        let { data: standings } = await axios.get(url);
+        let { data: scorers } = await axios.get(url2);
 
-        const standings = data.map((d) => ({
+        standings = standings.map((d) => ({
           name: d.team_name,
           rank: d.overall_league_position,
           l: d.overall_league_L,
@@ -69,9 +70,17 @@ function App() {
           gd: +d.overall_league_GF - +d.overall_league_GA,
         }));
 
+        scorers = scorers.map((s) => ({
+          rank: s.player_place,
+          player: s.player_name,
+          club: s.team_name,
+          goals: s.goals,
+        }));
+
         setState((state) => ({
           ...state,
           standings,
+          scorers,
         }));
       } catch (err) {
         console.log(err);
@@ -85,10 +94,59 @@ function App() {
     getStanding(state.activeLeague.league_id);
   }, [state.activeLeague]);
 
+  useEffect(() => {
+    const getFixtures = async (leagueId, teamId) => {
+      const url3 = `https://apiv3.apifootball.com/?action=get_events&from=2023-08-11&to=2024-05-19&league_id=${leagueId}&team_id=${teamId}&APIkey=${apiKey}`;
+      let { data } = await axios.get(url3);
+
+      console.log(data);
+
+      const fixtures = data
+        .map((f) => ({
+          league: f.league_name,
+          week: 4,
+          date: f.match_date,
+          home: {
+            icon: f.team_home_badge,
+            name: f.match_hometeam_name,
+          },
+          away: {
+            icon: f.team_away_badge,
+            name: f.match_awayteam_name,
+          },
+          status: f.match_status,
+          stadium: f.match_stadium.substring(0, f.match_stadium.indexOf('(')),
+        }))
+        .filter((f) => f.status !== 'Finished');
+
+      setState((state) => ({
+        ...state,
+        fixtures,
+      }));
+    };
+
+    if (!state.activeTeam || !state.activeLeague) {
+      return;
+    }
+
+    console.log(state.activeTeam);
+
+    getFixtures(state.activeLeague.league_id, state.activeTeam.team_key);
+  }, [state.activeTeam, state.activeLeague]);
+
   const changeActiveLeague = (league) => {
     setState((state) => ({
       ...state,
       activeLeague: league,
+      activeTeam: league.teams[0],
+    }));
+  };
+
+  const changeActiveTeam = (team) => {
+    console.log(team);
+    setState((state) => ({
+      ...state,
+      activeTeam: team,
     }));
   };
 
@@ -111,7 +169,15 @@ function App() {
             {state.isLoadingTeam ? (
               <div className="spinner"></div>
             ) : (
-              state.teams.map((t, i) => <Team key={i} name={t.team_name} teamNumber={20} icon={t.team_badge} />)
+              state.teams.map((t, i) => (
+                <Team
+                  key={i}
+                  name={t.team_name}
+                  teamNumber={20}
+                  icon={t.team_badge}
+                  onClick={() => changeActiveTeam(t)}
+                />
+              ))
             )}
           </div>
         </div>
