@@ -41,7 +41,9 @@ GIF created with ...
 
 ## Notes
 
-Describe any challenges encountered while building the app.
+I used a free app so it was really hard to tap the endpoints. I took time to make my model by myself.
+Moreover, I struggled a bit with the loading state and the management of my state data as it started to grew and I
+noticed that it might not be the good approach to store everything within a component.
 
 ## License
 
