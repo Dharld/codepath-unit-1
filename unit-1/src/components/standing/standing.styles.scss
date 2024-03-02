@@ -1,0 +1,48 @@
+.standing {
+    display: block;
+    height: 45vh;
+    overflow-y: auto;
+    width: 100%;
+    margin-top: var(--space-xxs);
+
+    tbody, thead {
+        display: block;
+    }
+    
+    thead {
+        position: sticky;
+        top: 0;
+        background: var(--high-contrast);
+    }
+
+    tr {
+        display: flex;
+        width: 100%;
+        color: var(--text-subtle);
+        gap: 1rem;
+        padding-bottom: var(--space-xs);
+        border-bottom: .125px solid var(--highest-contrast);
+    
+        
+        .fill {
+            flex: 1;
+            text-align: left;
+        }
+
+        td, th {
+
+            &:last-child, &:first-child {
+                width: 3ch;
+            }
+            width: 2ch;
+            text-align: center;
+        }
+    }
+    
+    tbody {
+        .line {
+            padding-top: var(--space-xs);
+        }
+        
+    }
+}

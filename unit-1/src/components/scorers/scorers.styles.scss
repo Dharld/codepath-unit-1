@@ -1,0 +1,95 @@
+.scorers {
+    display: block;
+    overflow-y: auto;
+    width: 100%;
+    margin-top: var(--space-xxs);
+
+    tbody, thead {
+        display: block;
+    }
+    
+    thead {
+        position: sticky;
+        top: 0;
+        background: var(--high-contrast);
+    }
+
+    tr {
+        display: flex;
+        width: 100%;
+        color: var(--text-subtle);
+        gap: 1rem;
+        padding-bottom: var(--space-xs);
+        border-bottom: .125px solid var(--highest-contrast);
+    
+        
+        .fill {
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            flex: 1;
+            text-align: left;
+        }
+
+        td, th {
+
+            &:first-child {
+                width: 4ch;
+            }
+
+            &.w-4ch {
+                overflow: hidden;
+                white-space: nowrap;
+                text-overflow: ellipsis;
+                width: 4ch;
+            }
+
+            &.w-5ch {
+                overflow: hidden;
+                white-space: nowrap;
+                text-overflow: ellipsis;
+                width: 5ch;
+            }
+
+            &.w-6ch {
+                overflow: hidden;
+                white-space: nowrap;
+                text-overflow: ellipsis;
+                width: 6ch;
+            }
+
+            
+            &.w-8ch {
+                overflow: hidden;
+                white-space: nowrap;
+                width: 8ch;
+                text-overflow: ellipsis;
+            }
+
+            &.w-10ch {
+                overflow: hidden;
+                white-space: nowrap;
+                text-overflow: ellipsis;
+                width: 10ch;
+                height: 1ch;
+            }
+
+            &.ta-center {
+                text-align: center !important;
+            }
+
+            &.ta-left {
+                text-align: left !important;
+            }
+
+            text-align: left;
+        }
+    }
+    
+    tbody {
+        .line {
+            padding-top: var(--space-xs);
+        }
+        
+    }
+}
