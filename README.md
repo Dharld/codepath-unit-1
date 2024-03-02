@@ -28,7 +28,7 @@ The following **additional** features are implemented:
 
 Here's a walkthrough of implemented required features:
 
-<img src='src/assets/video.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+<img src='unit-1/src/assets/video.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
 <!-- Replace this with whatever GIF tool you used! -->
 
