@@ -1,84 +1,83 @@
-@import "./assets/styles/globals.scss";
+@import './assets/styles/globals.scss';
 @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap');
 
 .bg-component {
-    background-color: var(--high-contrast);
-    border-radius: 8px;
+  background-color: var(--high-contrast);
+  border-radius: 8px;
 }
 
 .title {
-    font-family: "rubik";
-    font-size: 1.25rem;
-    font-weight: bold;
-    color: white;
+  font-family: 'rubik';
+  font-size: 1.25rem;
+  font-weight: bold;
+  color: white;
 }
 
 .flex {
-    display: flex;
+  display: flex;
 
-    .aic {
-        align-items: center;
-    }
+  .aic {
+    align-items: center;
+  }
 
-    .jc {
-        justify-content: center;
-    }
+  .jc {
+    justify-content: center;
+  }
 }
 
 .App {
-    width: 100vw;
-    height: 100vh;
-    overflow: hidden;
-    background-color: var(--background);
-    padding: 2rem;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  background-color: var(--background);
+  padding: 2rem;
 
-    .container {
-        display: flex;
-        height: 100%;
-        gap: 1rem;
+  .container {
+    display: flex;
+    height: 100%;
+    gap: 1rem;
 
-       
-        main.main {
-            flex: 1;
-        }
-
-        .left,  .main {
-            padding: 1rem;
-        }
-
-        
-        .space {
-            
-            padding: 1rem;
-        }
+    main.main {
+      flex: 1;
     }
 
-    .right {
-        display: flex;
-        flex-direction: column;
-        
-    }
-    .leagues {
-        margin-top: 1rem;
+    .left,
+    .main {
+      padding: 1rem;
     }
 
-    .teams {
-        margin-top: 1rem;
+    .space {
+      padding: 1rem;
     }
+  }
 
-    .second {
-        display: block;
-        margin-top: var(--space-xs);
-        flex: 1;
-        overflow-y: auto;
-        overflow-x: hidden;
-    }
+  .right {
+    display: flex;
+    flex-direction: column;
+  }
+  .leagues {
+    margin-top: 1rem;
+  }
 
-    .fixtures {
-        @include grid;
-        @include gridAuto(calc(50% - 10px));
-        padding-block: .5rem;
-        height: 100%;
-        overflow: auto;
-    }
+  .teams {
+    margin-top: 1rem;
+    height: 40vh;
+    overflow: auto;
+  }
+
+  .second {
+    display: block;
+    margin-top: var(--space-xs);
+    flex: 1;
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
+
+  .fixtures {
+    @include grid;
+    @include gridAuto(calc(50% - 10px));
+    padding-block: 0.5rem;
+    height: 100%;
+    overflow: auto;
+  }
 }
